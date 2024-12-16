@@ -24,7 +24,7 @@ async function createWidget(config) {
     widget.addText("V2");
 
     return widget
-}
+};
 
 async function getTeams(sport, league, team) {
   const baseUrl = "https://site.api.espn.com/apis/site/v2/sports/";
@@ -39,7 +39,7 @@ async function getTeams(sport, league, team) {
 
   // Return the returned launch data
   return response;
-}
+};
 
 async function getScores(sport, league) {
   const baseScoreUrl = "http://site.api.espn.com/apis/site/v2/sports/"
@@ -54,9 +54,9 @@ async function getScores(sport, league) {
 
   // Return the returned launch data
   return response;
-}
+};
 
-/ Get Teams:
+// Get Teams:
 // basketball/nba/teams
 // baseball/mlb/teams
 // football/nfl/teams
@@ -67,7 +67,5 @@ async function getScores(sport, league) {
 
 
 module.exports = {
-    createWidget,
-    getTeams,
-    getScores
+    createWidget
 }
