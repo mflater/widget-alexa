@@ -4,28 +4,6 @@
 
 //@ts-check
 
-/**
- * Create the widget
- * @param {{widgetParameter: string, debug: string}} config widget configuration
- */
-async function createWidget(config) {
-    const log = config.debug ? console.log.bind(console) : function () {};
-    log(JSON.stringify(config, null, 2))
-
-    let message = 'Hello World!'
-    let param = config.widgetParameter
-    if (param != null && param.length > 0) {
-        message = param
-    }
-
-    // @ts-ignore
-    const widget = new ListWidget()
-    
-    widget.addText("V2");
-
-    return widget
-};
-
 async function getTeams(sport, league, team) {
   const baseUrl = "https://site.api.espn.com/apis/site/v2/sports/";
   // Query url
@@ -54,6 +32,64 @@ async function getScores(sport, league) {
 
   // Return the returned launch data
   return response;
+};
+
+function populateTable(table, scores) {
+  table.removeAllRows()
+  // Add reminders to the table.
+  for (event of scores.events) {
+    let row = new UITableRow()
+    row.height = 60
+    let titleCell = row.addText(getHomeTeam(event.competitions[0].competitors), getAwayTeam(event.competitions[0].competitors))
+    titleCell.subtitleColor = Color.red()
+    titleCell.widthWeight = 80
+    row.dismissOnSelect = false
+    //row.onSelect = (idx) => {
+    //  let reminder = reminders[idx - 1]
+    //  toggleCompleted(reminder)
+    //  populateTable(table, reminders)
+    //}
+    table.addRow(row)
+  }
+  table.reload()
+}
+
+function getHomeTeam (competitors) {
+  if (competitors[0].homeAway == "home"){
+    return competitors[0].team.abbreviation;
+  } 
+  return competitors[1].team.abbreviation;
+}
+
+function getAwayTeam (competitors) {
+  if (competitors[0].homeAway == "away"){
+    return competitors[0].team.abbreviation;
+  } 
+  return competitors[1].team.abbreviation;
+}
+
+/**
+ * Create the widget
+ * @param {{widgetParameter: string, debug: string}} config widget configuration
+ */
+async function createWidget(config) {
+    const log = config.debug ? console.log.bind(console) : function () {};
+    log(JSON.stringify(config, null, 2))
+
+    let message = 'Hello World!'
+    let param = config.widgetParameter
+    if (param != null && param.length > 0) {
+        message = param
+    }
+
+    // @ts-ignore
+    let widget = new ListWidget()
+    
+    let stack = widget.addStack();
+
+    stack.addText("GS");
+
+    return widget
 };
 
 // Get Teams:
