@@ -1,20 +1,34 @@
-async function createWidget() {
-  // Create new empty ListWidget instance
-  const widget = new ListWidget();
+async function createWidget(config) {
+    const log = config.debug ? console.log.bind(console) : function () {};
+    log(JSON.stringify(config, null, 2))
 
-  let stack = widget.addStack();
+    let message = 'Hello World!'
+    let param = config.widgetParameter
+    if (param != null && param.length > 0) {
+        message = param
+    }
 
-  widget.addText("test");
-  // stack.addText("Test");
+    // @ts-ignore
+    const widget = new ListWidget()
 
-  // let scores = await getScores('football', 'nfl');
-  // let table = new UITable();
-  // table.showSeparators = true;
-  // populateTable(table, scores);
-  // QuickLook.present(table);
-  
-  // Return the created widget
-  return widget;
+    widget.addSpacer(4)
+
+    widget.setPadding(10, 10, 10, 10)
+
+    let row = widget.addStack()
+    row.layoutHorizontally()
+
+    let column = row.addStack()
+    column.layoutVertically()
+
+    column.addText(message)
+    column.addText("Version: development")
+
+    let currentTime = new Date().toLocaleTimeString('de-DE', { hour: "numeric", minute: "numeric" })
+
+    column.addText(currentTime)
+
+    return widget
 }
 
 module.exports = {
