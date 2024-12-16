@@ -7,6 +7,12 @@
 // ESPN API endpoint for team data
 // https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/SF
 
+  let scores = await getScores('football', 'nfl');
+  let table = new UITable();
+  table.showSeparators = true;
+  populateTable(table, scores);
+  QuickLook.present(table);
+
 const baseUrl = "https://site.api.espn.com/apis/site/v2/sports/";
 async function getTeams(sport, league, team) {
   // Query url
