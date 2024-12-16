@@ -45,7 +45,7 @@ async function getScores(sport, league) {
 
 async function createWidget() {
   // Create new empty ListWidget instance
-  let listwidget = new ListWidget();
+  let widget = new ListWidget();
 
   widget.addSpacer(4)
 
@@ -66,7 +66,7 @@ async function createWidget() {
   // QuickLook.present(table);
   
   // Return the created widget
-  return listwidget;
+  return widget;
 }
 
 // Script.setWidget(createWidget());
