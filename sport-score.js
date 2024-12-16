@@ -107,7 +107,7 @@ async function createWidget(config) {
     // table.addRow(rowTwo);
 
     // await QuickLook.present(table)
-    let cellSize = new Size(100, 40)l
+    let cellSize = new Size(100, 40);
     let widget = new ListWidget();
     let main = widget.addStack();
     main.layoutHorizontally();
