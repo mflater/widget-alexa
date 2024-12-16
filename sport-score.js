@@ -94,8 +94,10 @@ async function createWidget(config) {
     let bottomLeft = rowOne.addStack();
     topLeft.addText("1");
     topLeft.setPadding(5,5,5,5);
+    topLeft.backgroundColor = new Color('#00ff00');
     bottomLeft.addText("3");
     bottomLeft.setPadding(5,5,5,5);
+    bottomLeft.backgroundColor = new Color('#000000');
 
     let rowTwo = main.addStack();
     rowTwo.layoutVertically();
@@ -103,9 +105,10 @@ async function createWidget(config) {
     let bottomRight = rowTwo.addStack();
     topRight.addText("2");
     topRight.setPadding(5,5,5,5);
+    topRight.backgroundColor = new Color('#00f00f');
     bottomRight.addText("4");
     bottomRight.setPadding(5,5,5,5);
-  
+    bottomRight.backgroundColor = new Color('#555555');  
     return widget
 };
 
