@@ -72,7 +72,7 @@ async function createWidget(config) {
     // @ts-ignore
     const widget = new ListWidget()
     
-    widget.addText("VFucking work bitch");
+    widget.addText("V2");
 
     return widget
 }
