@@ -1,10 +1,11 @@
-async function createWidget(x) {
+async function createWidget() {
   // Create new empty ListWidget instance
   const widget = new ListWidget();
 
   let stack = widget.addStack();
 
-  stack.addText("Test");
+  widget.addText("test");
+  // stack.addText("Test");
 
   // let scores = await getScores('football', 'nfl');
   // let table = new UITable();
