@@ -117,13 +117,12 @@ async function createWidget(config) {
     let topLeft = rowOne.addStack();
   
     topLeft.addText("12345");
-    topLeft.setPadding(15,15,15,15);
     topLeft.size = cellSize;
+    topLeft.centerAlignContent();
 
     let bottomLeft = rowOne.addStack();
     bottomLeft.addText("34567");
-    bottomLeft.setPadding(15,15,15,15);
-    bottomLeft.borderwidth = 1;
+    bottomLeft.size = cellSize;
     bottomLeft.centerAlignContent();
 
     let rowTwo = main.addStack();
@@ -131,14 +130,12 @@ async function createWidget(config) {
   
     let topRight = rowTwo.addStack();
     topRight.addText("23456");
-    topRight.setPadding(15,15,15,15);
-    topRight.borderwidth = 1;
+    topRight.size = cellSize;
     topRight.centerAlignContent();
 
     let bottomRight = rowTwo.addStack();
     bottomRight.addText("45678");
-    bottomRight.setPadding(15,15,15,15);
-    bottomRight.borderwidth = 1;
+    bottomRight.size = cellSize;
     bottomRight.centerAlignContent();
     return widget
 };
