@@ -86,7 +86,7 @@ async function createWidget(config) {
     let widget = new ListWidget()
     
     let main = widget.addStack();
-    main.layoutHorizonally();
+    main.layoutHorizontally();
   
     let sOne = main.addStack()
     sOne.addText("GS");
