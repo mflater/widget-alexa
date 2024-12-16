@@ -83,68 +83,64 @@ async function createWidget(config) {
     }
 
     // @ts-ignore
-    let table = new UITable();
-    let rowOne = new UITableRow();
-    let rowTwo = new UITableRow(); 
+    // let table = new UITable();
+    // let rowOne = new UITableRow();
+    // let rowTwo = new UITableRow(); 
     
-    let cellOne = rowOne.addText("test 1");
-    cellOne.widthWeight = 100;
-    rowOne.addCell(cellOne);
+    // let cellOne = rowOne.addText("test 1");
+    // cellOne.widthWeight = 100;
+    // rowOne.addCell(cellOne);
 
-    let cellThree = rowOne.addText("test 3");
-    cellThree.widthWeight = 100;
-    rowOne.addCell(cellThree);
+    // let cellThree = rowOne.addText("test 3");
+    // cellThree.widthWeight = 100;
+    // rowOne.addCell(cellThree);
 
-    let cellTwo = rowTwo.addText("test 2");
-    cellTwo.widthWeight = 100;
-    rowTwo.addCell(cellTwo);
+    // let cellTwo = rowTwo.addText("test 2");
+    // cellTwo.widthWeight = 100;
+    // rowTwo.addCell(cellTwo);
 
-    let cellFour = rowTwo.addText("test 4");
-    cellFour.widthWeight = 100;
-    rowTwo.addCell(cellFour);
+    // let cellFour = rowTwo.addText("test 4");
+    // cellFour.widthWeight = 100;
+    // rowTwo.addCell(cellFour);
 
-    table.addRow(rowOne);
-    table.addRow(rowTwo);
+    // table.addRow(rowOne);
+    // table.addRow(rowTwo);
 
-    await QuickLook.present(table)
+    // await QuickLook.present(table)
+    let cellSize = new Size(100, 40)l
+    let widget = new ListWidget();
+    let main = widget.addStack();
+    main.layoutHorizontally();
   
-    //let widget = new ListWidget()
-
-    
-    
-    // let main = widget.addStack();
-    // main.layoutHorizontally();
+    let rowOne = main.addStack();
+    rowOne.layoutVertically();
+    let topLeft = rowOne.addStack();
   
-    // let rowOne = main.addStack();
-    // rowOne.layoutVertically();
-    // let topLeft = rowOne.addStack();
+    topLeft.addText("12345");
+    topLeft.setPadding(15,15,15,15);
+    topLeft.size = cellSize;
+
+    let bottomLeft = rowOne.addStack();
+    bottomLeft.addText("34567");
+    bottomLeft.setPadding(15,15,15,15);
+    bottomLeft.borderwidth = 1;
+    bottomLeft.centerAlignContent();
+
+    let rowTwo = main.addStack();
+    rowTwo.layoutVertically();
   
-    // topLeft.addText("12345");
-    // topLeft.setPadding(15,15,15,15);
-    // topLeft.borderwidth = 1;
-    // topLeft.centerAlignContent();
+    let topRight = rowTwo.addStack();
+    topRight.addText("23456");
+    topRight.setPadding(15,15,15,15);
+    topRight.borderwidth = 1;
+    topRight.centerAlignContent();
 
-    // let bottomLeft = rowOne.addStack();
-    // bottomLeft.addText("34567");
-    // bottomLeft.setPadding(15,15,15,15);
-    // bottomLeft.borderwidth = 1;
-    // bottomLeft.centerAlignContent();
-
-    // let rowTwo = main.addStack();
-    // rowTwo.layoutVertically();
-  
-    // let topRight = rowTwo.addStack();
-    // topRight.addText("23456");
-    // topRight.setPadding(15,15,15,15);
-    // topRight.borderwidth = 1;
-    // topRight.centerAlignContent();
-
-    // let bottomRight = rowTwo.addStack();
-    // bottomRight.addText("45678");
-    // bottomRight.setPadding(15,15,15,15);
-    // bottomRight.borderwidth = 1;
-    // bottomRight.centerAlignContent();
-    // return widget
+    let bottomRight = rowTwo.addStack();
+    bottomRight.addText("45678");
+    bottomRight.setPadding(15,15,15,15);
+    bottomRight.borderwidth = 1;
+    bottomRight.centerAlignContent();
+    return widget
 };
 
 // Get Teams:
