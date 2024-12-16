@@ -119,6 +119,7 @@ async function createWidget(config) {
     topLeft.addText("12345");
     topLeft.size = cellSize;
     topLeft.centerAlignContent();
+    topLeft.backgroundColor = new Color('#001100');
 
     let bottomLeft = rowOne.addStack();
     bottomLeft.addText("34567");
