@@ -85,10 +85,14 @@ async function createWidget(config) {
     // @ts-ignore
     let widget = new ListWidget()
     
-    let stack = widget.addStack();
+    let stackOne = widget.addStack();
 
-    stack.addText("GS");
+    stackOne.addText("GS");
 
+    let stackTwo = widget.addStack();
+
+    stackTwo.addText("GS2");
+  
     return widget
 };
 
