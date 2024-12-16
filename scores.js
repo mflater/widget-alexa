@@ -32,7 +32,7 @@ async function createWidget(config) {
     column.layoutVertically()
 
     column.addText(message)
-    column.addText("Version: development")
+    column.addText("Version: mike")
 
     let currentTime = new Date().toLocaleTimeString('de-DE', { hour: "numeric", minute: "numeric" })
 
