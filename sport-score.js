@@ -83,40 +83,62 @@ async function createWidget(config) {
     }
 
     // @ts-ignore
-    let widget = new ListWidget()
+    let table = new UITable();
+    let rowOne = table.addRow();
+    let rowTwo = table.addRow();
+
+    let cellOne = rowOne.addCell();
+    cellOne.widthWeight = 100;
+    cellOne.text("test 1");
+
+    let cellThree = rowOne.addCell();
+    cellThree.widthWeight = 100;
+    cellThree.text("test 3");
+
+    let cellTwo = rowTwo.addCell();
+    cellTwo.widthWeight = 100;
+    cellTwo.text("test 2");
+
+    let cellFour = rowTwo.addCell();
+    cellFour.widthWeight = 100;
+    cellFour.text("test 4");
+  
+    //let widget = new ListWidget()
+
     
-    let main = widget.addStack();
-    main.layoutHorizontally();
+    
+    // let main = widget.addStack();
+    // main.layoutHorizontally();
   
-    let rowOne = main.addStack();
-    rowOne.layoutVertically();
-    let topLeft = rowOne.addStack();
+    // let rowOne = main.addStack();
+    // rowOne.layoutVertically();
+    // let topLeft = rowOne.addStack();
   
-    topLeft.addText("12345");
-    topLeft.setPadding(15,15,15,15);
-    topLeft.borderwidth = 1;
-    topLeft.centerAlignContent();
+    // topLeft.addText("12345");
+    // topLeft.setPadding(15,15,15,15);
+    // topLeft.borderwidth = 1;
+    // topLeft.centerAlignContent();
 
-    let bottomLeft = rowOne.addStack();
-    bottomLeft.addText("34567");
-    bottomLeft.setPadding(15,15,15,15);
-    bottomLeft.borderwidth = 1;
-    bottomLeft.centerAlignContent();
+    // let bottomLeft = rowOne.addStack();
+    // bottomLeft.addText("34567");
+    // bottomLeft.setPadding(15,15,15,15);
+    // bottomLeft.borderwidth = 1;
+    // bottomLeft.centerAlignContent();
 
-    let rowTwo = main.addStack();
-    rowTwo.layoutVertically();
+    // let rowTwo = main.addStack();
+    // rowTwo.layoutVertically();
   
-    let topRight = rowTwo.addStack();
-    topRight.addText("23456");
-    topRight.setPadding(15,15,15,15);
-    topRight.borderwidth = 1;
-    topRight.centerAlignContent();
+    // let topRight = rowTwo.addStack();
+    // topRight.addText("23456");
+    // topRight.setPadding(15,15,15,15);
+    // topRight.borderwidth = 1;
+    // topRight.centerAlignContent();
 
-    let bottomRight = rowTwo.addStack();
-    bottomRight.addText("45678");
-    bottomRight.setPadding(15,15,15,15);
-    bottomRight.borderwidth = 1;
-    bottomRight.centerAlignContent();
+    // let bottomRight = rowTwo.addStack();
+    // bottomRight.addText("45678");
+    // bottomRight.setPadding(15,15,15,15);
+    // bottomRight.borderwidth = 1;
+    // bottomRight.centerAlignContent();
     return widget
 };
 
