@@ -45,12 +45,25 @@ async function getScores(sport, league) {
 
 async function createWidget() {
   // Create new empty ListWidget instance
-  //let listwidget = new ListWidget();
-  let scores = await getScores('football', 'nfl');
-  let table = new UITable();
-  table.showSeparators = true;
-  populateTable(table, scores);
-  QuickLook.present(table);
+  let listwidget = new ListWidget();
+
+  widget.addSpacer(4)
+
+  widget.setPadding(10, 10, 10, 10)
+  let row = widget.addStack()
+  row.layoutHorizontally()
+
+  let column = row.addStack()
+  column.layoutVertically()
+
+  column.addText(message)
+  column.addText("Version: development")
+
+  // let scores = await getScores('football', 'nfl');
+  // let table = new UITable();
+  // table.showSeparators = true;
+  // populateTable(table, scores);
+  // QuickLook.present(table);
   
   // Return the created widget
   return listwidget;
