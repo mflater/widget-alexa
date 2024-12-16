@@ -95,9 +95,11 @@ async function createWidget(config) {
     topLeft.addText("1");
     topLeft.setPadding(15,15,15,15);
     topLeft.borderwidth = 1;
+    topLeft.centerAlignContent();
     bottomLeft.addText("3");
     bottomLeft.setPadding(15,15,15,15);
     bottomLeft.borderwidth = 1;
+    bottomLeft.centerAlignContent();
 
     let rowTwo = main.addStack();
     rowTwo.layoutVertically();
@@ -106,9 +108,11 @@ async function createWidget(config) {
     topRight.addText("2");
     topRight.setPadding(15,15,15,15);
     topRight.borderwidth = 1;
+    topRight.centerAlignContent();
     bottomRight.addText("4");
     bottomRight.setPadding(15,15,15,15);
     bottomRight.borderwidth = 1;
+    bottomRight.centerAlignContent();
     return widget
 };
 
