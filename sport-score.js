@@ -67,5 +67,7 @@ async function getScores(sport, league) {
 
 
 module.exports = {
-    createWidget
+    createWidget,
+    getTeams,
+    getScores
 }
