@@ -87,24 +87,20 @@ async function createWidget(config) {
     let rowOne = new UITableRow();
     let rowTwo = new UITableRow(); 
     
-    let cellOne = new UITableCell();
+    let cellOne = rowOne.addText("test 1");
     cellOne.widthWeight = 100;
-    cellOne.text("test 1");
     rowOne.addCell(cellOne);
 
-    let cellThree = new UITableCell();
+    let cellThree = rowOne.addText("test 3");
     cellThree.widthWeight = 100;
-    cellThree.text("test 3");
     rowOne.addCell(cellThree);
 
-    let cellTwo = new UITableCell();
+    let cellTwo = rowTwo.addText("test 2");
     cellTwo.widthWeight = 100;
-    cellTwo.text("test 2");
     rowTwo.addCell(cellTwo);
 
-    let cellFour = new UITableCell();
+    let cellFour = rowTwo.addText("test 4");
     cellFour.widthWeight = 100;
-    cellFour.text("test 4");
     rowTwo.addCell(cellFour);
 
     table.addRow(rowOne);
