@@ -4,6 +4,10 @@
 
 //@ts-check
 
+/**
+ * Create the widget
+ * @param {{widgetParameter: string, debug: string}} config widget configuration
+ */
 async function createWidget(config) {
     const log = config.debug ? console.log.bind(console) : function () {};
     log(JSON.stringify(config, null, 2))
@@ -40,4 +44,3 @@ async function createWidget(config) {
 module.exports = {
     createWidget
 }
-
