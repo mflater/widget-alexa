@@ -1,6 +1,6 @@
 async function createWidget() {
   // Create new empty ListWidget instance
-  let widget = new ListWidget();
+  const widget = new ListWidget();
 
   let stack = widget.addStack();
 
