@@ -102,6 +102,8 @@ async function createWidget(config) {
     let cellFour = rowTwo.addCell();
     cellFour.widthWeight = 100;
     cellFour.text("test 4");
+
+    await QuickLook.present(table)
   
     //let widget = new ListWidget()
 
@@ -139,7 +141,7 @@ async function createWidget(config) {
     // bottomRight.setPadding(15,15,15,15);
     // bottomRight.borderwidth = 1;
     // bottomRight.centerAlignContent();
-    return widget
+    // return widget
 };
 
 // Get Teams:
