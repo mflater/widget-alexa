@@ -20,23 +20,8 @@ async function createWidget(config) {
 
     // @ts-ignore
     const widget = new ListWidget()
-
-    widget.addSpacer(4)
-
-    widget.setPadding(10, 10, 10, 10)
-
-    let row = widget.addStack()
-    row.layoutHorizontally()
-
-    let column = row.addStack()
-    column.layoutVertically()
-
-    column.addText(message)
-    column.addText("Version: mike")
-
-    let currentTime = new Date().toLocaleTimeString('de-DE', { hour: "numeric", minute: "numeric" })
-
-    column.addText(currentTime)
+    
+    widget.addText("Version: mike")
 
     return widget
 }
