@@ -87,21 +87,26 @@ async function createWidget(config) {
     let rowOne = table.addRow();
     let rowTwo = table.addRow();
 
-    let cellOne = rowOne.addCell();
+    
+    let cellOne = new UITableCell();
     cellOne.widthWeight = 100;
     cellOne.text("test 1");
+    rowOne.addCell(cellOne)
 
-    let cellThree = rowOne.addCell();
+    let cellThree = new UITableCell();
     cellThree.widthWeight = 100;
     cellThree.text("test 3");
+    rowOne.addCell(cellThree)
 
-    let cellTwo = rowTwo.addCell();
+    let cellTwo = new UITableCell();
     cellTwo.widthWeight = 100;
     cellTwo.text("test 2");
+    rowTwo.addCell(cellTwo)
 
-    let cellFour = rowTwo.addCell();
+    let cellFour = new UITableCell();
     cellFour.widthWeight = 100;
     cellFour.text("test 4");
+    rowTwo.addCell(cellFour)
 
     await QuickLook.present(table)
   
