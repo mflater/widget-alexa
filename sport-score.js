@@ -88,11 +88,23 @@ async function createWidget(config) {
     let main = widget.addStack();
     main.layoutHorizontally();
   
-    let sOne = main.addStack()
-    sOne.addText("GS");
+    let rowOne = main.addStack();
+    rowOne.layoutVertically();
+    let topLeft = rowOne.addStack();
+    let bottomLeft = rowOne.addStack();
+    topLeft.addText("1");
+    topLeft.setPadding(5,5,5,5);
+    bottomLeft.addText("3");
+    bottomLeft.setPadding(5,5,5,5);
 
-    let sTwo = main.addStack();
-    sTwo.addText("GS2");
+    let rowTwo = main.addStack();
+    rowTwo.layoutVertically();
+    let topRight = rowTwo.addStack();
+    let bottomRight = rowTwo.addStack();
+    topRight.addText("2");
+    topRight.setPadding(5,5,5,5);
+    bottomRight.addText("4");
+    bottomRight.setPadding(5,5,5,5);
   
     return widget
 };
