@@ -7,11 +7,11 @@
 // ESPN API endpoint for team data
 // https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/SF
 
-let scores = await getScores('football', 'nfl');
-let table = new UITable();
-table.showSeparators = true;
-populateTable(table, scores);
-QuickLook.present(table);
+// let scores = await getScores('football', 'nfl');
+// let table = new UITable();
+// table.showSeparators = true;
+// populateTable(table, scores);
+// QuickLook.present(table);
 
 const baseUrl = "https://site.api.espn.com/apis/site/v2/sports/";
 async function getTeams(sport, league, team) {
@@ -45,7 +45,7 @@ async function getScores(sport, league) {
 
 async function createWidget() {
   // Create new empty ListWidget instance
-  let listwidget = new ListWidget();
+  //let listwidget = new ListWidget();
   let scores = await getScores('football', 'nfl');
   let table = new UITable();
   table.showSeparators = true;
