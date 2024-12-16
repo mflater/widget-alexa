@@ -21,7 +21,7 @@ async function createWidget(config) {
     // @ts-ignore
     const widget = new ListWidget()
     
-    widget.addText("Version: mike")
+    widget.addText("VFucking work bitch");
 
     return widget
 }
