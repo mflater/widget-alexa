@@ -87,10 +87,12 @@ async function createWidget(config) {
     
     let stackOne = widget.addStack();
 
+    stackOne.layoutVertically();
     stackOne.addText("GS");
 
     let stackTwo = widget.addStack();
 
+    stackTwo.layoutVertically();
     stackTwo.addText("GS2");
   
     return widget
