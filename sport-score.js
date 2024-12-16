@@ -91,25 +91,29 @@ async function createWidget(config) {
     let rowOne = main.addStack();
     rowOne.layoutVertically();
     let topLeft = rowOne.addStack();
-    let bottomLeft = rowOne.addStack();
-    topLeft.addText("1");
+  
+    topLeft.addText("12345");
     topLeft.setPadding(15,15,15,15);
     topLeft.borderwidth = 1;
     topLeft.centerAlignContent();
-    bottomLeft.addText("3");
+
+    let bottomLeft = rowOne.addStack();
+    bottomLeft.addText("34567");
     bottomLeft.setPadding(15,15,15,15);
     bottomLeft.borderwidth = 1;
     bottomLeft.centerAlignContent();
 
     let rowTwo = main.addStack();
     rowTwo.layoutVertically();
+  
     let topRight = rowTwo.addStack();
-    let bottomRight = rowTwo.addStack();
-    topRight.addText("2");
+    topRight.addText("23456");
     topRight.setPadding(15,15,15,15);
     topRight.borderwidth = 1;
     topRight.centerAlignContent();
-    bottomRight.addText("4");
+
+    let bottomRight = rowTwo.addStack();
+    bottomRight.addText("45678");
     bottomRight.setPadding(15,15,15,15);
     bottomRight.borderwidth = 1;
     bottomRight.centerAlignContent();
