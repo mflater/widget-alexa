@@ -4,8 +4,8 @@
 
 //@ts-check
 // Fonts
-const smallFont = new Font('Apple SD Gothic Neo', 8);
-const largeFont = new Font('Apple SD Gothic Neo', 12);
+const smallFont = new Font('AppleSDGothicNeo-Thin', 8);
+const largeFont = new Font('AppleSDGothicNeo-Thin', 12);
 
 
 const favorites = [{
