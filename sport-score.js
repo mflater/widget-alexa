@@ -34,8 +34,8 @@ function addCompetition (main, teamData) {
   let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let htCode = homeTeamPath.team.abbreviation;
   let atCode = awayTeamPath.team.abbreviation;
-  let htScore = homeTeamPath.score.value;
-  let atScore = awayTeamPath.score.value;
+  let htScore = homeTeamPath.score.displayValue;
+  let atScore = awayTeamPath.score.displayValue;
   
   let competition = main.addStack();
   competition.layoutVertically();
@@ -50,14 +50,14 @@ function addCompetition (main, teamData) {
   awayTeam.spacing = 40;
   let awayTeamCode = awayTeam.addText(atCode);
   awayTeamCode.leftAlignText();
-  let awayTeamScore = awayTeam.addText("" + atScore);
+  let awayTeamScore = awayTeam.addText(atScore);
   awayTeamScore.rightAlignText();
 
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
   let homeTeamCode = homeTeam.addText(htCode);
   homeTeamCode.leftAlignText();
-  let homeTeamScore = homeTeam.addText("" + htScore);
+  let homeTeamScore = homeTeam.addText(htScore);
   homeTeamScore.rightAlignText();
 }
 
