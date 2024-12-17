@@ -120,7 +120,7 @@ async function createWidget(config) {
     homeTeam.layoutHorizontally();
 
     awayTeam.size = new Size(60, 20);
-    awayTeam.spacing = 60;
+    awayTeam.spacing = 20;
     let awayTeamCode = awayTeam.addText("LAR");
     awayTeamCode.leftAlignText();
   
