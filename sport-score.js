@@ -96,7 +96,7 @@ async function createWidget(config) {
 
     favorites.forEach(function (fav) {
       await teamData = getTeamData(fav.sport, fav.league, fav.team);
-      log(JSON.stringify(teamData));
+      log(JSON.stringify(teamData, null, 2));
       addCompetition(main, teamData);
     })
     
