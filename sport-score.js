@@ -4,8 +4,8 @@
 
 //@ts-check
 // Fonts
-let smallFont = new Font("AppleSDGothicNeo-Thin", 8);
-let largeFont = new Font("AppleSDGothicNeo-Thin", 12);
+let smallFont = new Font("AppleSDGothicNeo-Thin", 12);
+let largeFont = new Font("AppleSDGothicNeo-Thin", 16);
 
 
 const favorites = [{
@@ -60,16 +60,20 @@ function addCompetition (main, teamData) {
   awayTeam.size = new Size(100, 20);
   awayTeam.spacing = 40;
   let awayTeamCode = awayTeam.addText(atCode);
+  awayTeamCode.font = largeFont;
   awayTeamCode.leftAlignText();
   let awayTeamScore = awayTeam.addText("" + atScore);
+  awayTeamScore.font = largeFont;
   awayTeamScore.rightAlignText();
 
   // Set home team info
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
   let homeTeamCode = homeTeam.addText(htCode);
+  homeTeamCode.font = largeFont;
   homeTeamCode.leftAlignText();
   let homeTeamScore = homeTeam.addText("" + htScore);
+  homeTeamScore.font = largeFont;
   homeTeamScore.rightAlignText();
 
 }
