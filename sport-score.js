@@ -107,6 +107,8 @@ async function createWidget(config) {
 };
 
 
+// NOTES:
+
 
 // Get Teams:
 // basketball/nba/teams
@@ -116,6 +118,8 @@ async function createWidget(config) {
 // https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams
 // ESPN API endpoint for team data
 // https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/SF
+
+// Using: https://gitlab.com/sillium-scriptable-projects/universal-scriptable-widget
 
 
 module.exports = {
