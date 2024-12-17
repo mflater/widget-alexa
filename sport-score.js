@@ -51,7 +51,7 @@ function addCompetition (main, teamData) {
 
   // Set status info
   let displayStatus = competition.addStack();
-  let statusText = displayStatus.addText(gameStatus);
+  let statusText = displayStatus.addText(gameStatus.toUpperCase());
   statusText.font = smallFont;
   displayStatus.centerAlignContent();
   
