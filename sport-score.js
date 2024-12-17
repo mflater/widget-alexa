@@ -4,8 +4,8 @@
 
 //@ts-check
 // Fonts
-var smallFont = new Font("AppleSDGothicNeo-Thin", 8);
-var largeFont = new Font("AppleSDGothicNeo-Thin", 12);
+const smallFont = new Font("AppleSDGothicNeo-Thin", 8);
+const largeFont = new Font("AppleSDGothicNeo-Thin", 12);
 
 
 const favorites = [{
@@ -49,7 +49,7 @@ function addCompetition (main, teamData) {
   let homeTeam = competition.addStack();
   homeTeam.layoutHorizontally();
 
-  Set status info
+  // Set status info
   let displayStatus = competition.addStack();
   let statusText = displayStatus.addText(gameStatus);
   statusText.font = smallFont;
