@@ -79,6 +79,12 @@ function getAwayTeam (competitors) {
   return competitors[1].team.abbreviation;
 }
 
+ async function processArray(array) {
+    for (const item of array) {
+      await doSomethingAsync(item);
+    }
+  }
+
 /**
  * Create the widget
  * @param {{widgetParameter: string, debug: string}} config widget configuration
@@ -99,12 +105,16 @@ async function createWidget(config) {
     let main = widget.addStack();
     main.layoutHorizontally();
 
+    for (const fav of favorites) {
+      await teamData = getTeamData(fav.sport, fav.league, fav.team);
+      addCompetition(main, teamData);
+    }
     // favorites.forEach(function (fav) {
     //   await teamData = getTeamData(fav.sport, fav.league, fav.team);
     //   // log(JSON.stringify(teamData, null, 2));
     //   addCompetition(main, teamData);
     // })
-     addCompetition(main, null);
+     // addCompetition(main, null);
   
 
     return widget
