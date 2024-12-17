@@ -53,7 +53,7 @@ function addCompetition (main, teamData) {
   let displayStatus = competition.addStack();
   let statusText = displayStatus.addText(gameStatus);
   statusText.font = smallFont;
-  displayStatus.centerAlignText();
+  displayStatus.centerAlignContent();
   
 
   // Set away team info
