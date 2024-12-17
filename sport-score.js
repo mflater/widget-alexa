@@ -54,6 +54,30 @@ function populateTable(table, scores) {
   table.reload()
 }
 
+function addCompetition (main) {
+
+  let competition = main.addStack();
+  competition.layoutVertically();
+  let awayTeam = competition.addStack();
+  awayTeam.layoutHorizontally();
+  let homeTeam = competition.addStack();
+  homeTeam.layoutHorizontally();
+
+  awayTeam.size = new Size(60, 20);
+  awayTeam.spacing = 20;
+  let awayTeamCode = awayTeam.addText("LAR");
+  awayTeamCode.leftAlignText();
+  let awayTeamScore = awayTeam.addText("6");
+  awayTeamScore.rightAlignText();
+
+  homeTeam.size = new Size(60, 20);
+  homeTeam.spacing = 20;
+  let homeTeamCode = homeTeam.addText("SF");
+  homeTeamCode.leftAlignText();
+  let homeTeamScore = homeTeam.addText("60");
+  homeTeamScore.rightAlignText();
+}
+
 function getHomeTeam (competitors) {
   if (competitors[0].homeAway == "home"){
     return competitors[0].team.abbreviation;
@@ -83,35 +107,18 @@ async function createWidget(config) {
     }
 
     // @ts-ignore
-    let cellSize = new Size(100, 40);
+    // let cellSize = new Size(100, 40);
     let widget = new ListWidget();
     let main = widget.addStack();
     main.layoutHorizontally();
   
-    let competitionOne = main.addStack();
-    competitionOne.layoutVertically();
-    awayTeam = competitionOne.addStack();
-    awayTeam.layoutHorizontally();
-    homeTeam = competitionOne.addStack();
-    homeTeam.layoutHorizontally();
-
-    awayTeam.size = new Size(60, 20);
-    awayTeam.spacing = 20;
-    let awayTeamCode = awayTeam.addText("LAR");
-    awayTeamCode.leftAlignText();
-  
-    let awayTeamScore = awayTeam.addText("6");
-    awayTeamScore.rightAlignText();
-
-    homeTeam.size = new Size(60, 20);
-    let homeTeamCode = homeTeam.addText("SF");
-    homeTeamCode.leftAlignText();
-    let homeTeamScore = homeTeam.addText("60");
-    homeTeamScore.rightAlignText();
+    addCompetition(main);
   
 
     return widget
 };
+
+
 
 // Get Teams:
 // basketball/nba/teams
