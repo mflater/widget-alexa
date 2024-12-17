@@ -90,35 +90,43 @@ function getAwayTeam (competitors) {
  * @param {{widgetParameter: string, debug: string}} config widget configuration
  */
 async function createWidget(config) {
-    const log = config.debug ? console.log.bind(console) : function () {};
-    log(JSON.stringify(config, null, 2))
+  const log = config.debug ? console.log.bind(console) : function () {};
+  log(JSON.stringify(config, null, 2))
 
-    let message = 'Hello World!'
-    let param = config.widgetParameter
-    if (param != null && param.length > 0) {
-        message = param
-    }
+  let message = 'Hello World!'
+  let param = config.widgetParameter
+  if (param != null && param.length > 0) {
+    message = param
+  }
 
-    // @ts-ignore
-    // let cellSize = new Size(100, 40);
-    let widget = new ListWidget();
-    let main = widget.addStack();
-    main.layoutHorizontally();
+  // @ts-ignore
+  // let cellSize = new Size(100, 40);
+  let widget = new ListWidget();
+  let main = widget.addStack();
+  main.layoutHorizontally();
 
-    for (const fav of favorites) {
-      await teamData = getTeamData(fav.sport, fav.league, fav.team);
-      addCompetition(main, teamData);
-    }
+    // for (const fav of favorites) {
+    //   await teamData = getTeamData(fav.sport, fav.league, fav.team);
+    //   addCompetition(main, teamData);
+    // }
     // favorites.forEach(function (fav) {
     //   await teamData = getTeamData(fav.sport, fav.league, fav.team);
     //   // log(JSON.stringify(teamData, null, 2));
     //   addCompetition(main, teamData);
     // })
      // addCompetition(main, null);
-  
 
-    return widget
+  processArray(main);
+
+  return widget
 };
+
+async function processArray(main) {
+    for (const fav of favorites) {
+      await teamData = getTeamData(fav.sport, fav.league, fav.team);
+      addCompetition(main, teamData);
+    }
+  }
 
 
 
