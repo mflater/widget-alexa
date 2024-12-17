@@ -4,7 +4,8 @@
 
 //@ts-check
 
-async function getTeams(sport, league, team) {
+const favorites [{"sport":"football", "league":"nfl", "team":"SF"}, {"sport":"football", "league":"nfl", "team":"LV"}];
+async function getTeamData(sport, league, team) {
   const baseUrl = "https://site.api.espn.com/apis/site/v2/sports/";
   // Query url
   const url = baseUrl + sport + '/' + league + '/teams/' + team;
@@ -19,43 +20,36 @@ async function getTeams(sport, league, team) {
   return response;
 };
 
-async function getScores(sport, league) {
-  const baseScoreUrl = "http://site.api.espn.com/apis/site/v2/sports/"
-  // Query url
-  const url = baseScoreUrl + sport + '/' + league + '/scoreboard';
+// function populateTable(table, scores) {
+//   table.removeAllRows()
+//   // Add reminders to the table.
+//   for (event of scores.events) {
+//     let row = new UITableRow()
+//     row.height = 60
+//     let titleCell = row.addText(getHomeTeam(event.competitions[0].competitors), getAwayTeam(event.competitions[0].competitors))
+//     titleCell.subtitleColor = Color.red()
+//     titleCell.widthWeight = 80
+//     row.dismissOnSelect = false
+//     //row.onSelect = (idx) => {
+//     //  let reminder = reminders[idx - 1]
+//     //  toggleCompleted(reminder)
+//     //  populateTable(table, reminders)
+//     //}
+//     table.addRow(row)
+//   }
+//   table.reload()
+// }
 
-  // Initialize new request
-  const request = new Request(url);
+function addCompetition (main, teamData) {
+  let homeTeamPath = teamData.team.nextEvent.competitions[0].competetors[0];
+  let htCode = homeTeamPath.team.abbreviation;
+  let htScore = homeTeamPath.score;
 
-  // Execute the request and parse the response as json
-  const response = await request.loadJSON();
+  let awayTeamPath = teamData.team.nextEvent.competitions[0].competetors[1];
+  let atCode = awayTeamPath.team.abbreviation;
+  let atScore = awayTeamPath.score;
 
-  // Return the returned launch data
-  return response;
-};
-
-function populateTable(table, scores) {
-  table.removeAllRows()
-  // Add reminders to the table.
-  for (event of scores.events) {
-    let row = new UITableRow()
-    row.height = 60
-    let titleCell = row.addText(getHomeTeam(event.competitions[0].competitors), getAwayTeam(event.competitions[0].competitors))
-    titleCell.subtitleColor = Color.red()
-    titleCell.widthWeight = 80
-    row.dismissOnSelect = false
-    //row.onSelect = (idx) => {
-    //  let reminder = reminders[idx - 1]
-    //  toggleCompleted(reminder)
-    //  populateTable(table, reminders)
-    //}
-    table.addRow(row)
-  }
-  table.reload()
-}
-
-function addCompetition (main) {
-
+  
   let competition = main.addStack();
   competition.layoutVertically();
   let awayTeam = competition.addStack();
@@ -65,16 +59,16 @@ function addCompetition (main) {
 
   awayTeam.size = new Size(60, 20);
   awayTeam.spacing = 20;
-  let awayTeamCode = awayTeam.addText("LAR");
+  let awayTeamCode = awayTeam.addText(atCode);
   awayTeamCode.leftAlignText();
-  let awayTeamScore = awayTeam.addText("6");
+  let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.rightAlignText();
 
   homeTeam.size = new Size(60, 20);
   homeTeam.spacing = 20;
-  let homeTeamCode = homeTeam.addText("SF");
+  let homeTeamCode = homeTeam.addText(htCode);
   homeTeamCode.leftAlignText();
-  let homeTeamScore = homeTeam.addText("60");
+  let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.rightAlignText();
 }
 
@@ -111,8 +105,12 @@ async function createWidget(config) {
     let widget = new ListWidget();
     let main = widget.addStack();
     main.layoutHorizontally();
-  
-    addCompetition(main);
+
+    for (fav in favorites) {
+      await teamData = getTeamData(fav.sport, fav.league, fav.team);
+      addCompetition(main, teamData);
+    }
+    
   
 
     return widget
