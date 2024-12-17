@@ -29,19 +29,19 @@ async function getTeamData(sport, league, team) {
 };
 
 function addCompetition (main, teamData) {
-  // let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
-  // let htCode = homeTeamPath.team.abbreviation;
-  // let htScore = homeTeamPath.score;
+  let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
+  let htCode = homeTeamPath.team.abbreviation;
+  let htScore = homeTeamPath.score;
 
-  let htCode = "xx";
-  let htScore = 44;
+  // let htCode = "xx";
+  // let htScore = 44;
 
-  // let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
-  // let atCode = awayTeamPath.team.abbreviation;
-  // let atScore = awayTeamPath.score;
+  let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
+  let atCode = awayTeamPath.team.abbreviation;
+  let atScore = awayTeamPath.score;
 
-  let atCode = "dd";
-  let atScore = 33;
+  // let atCode = "dd";
+  // let atScore = 33;
   
   let competition = main.addStack();
   competition.layoutVertically();
