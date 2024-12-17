@@ -29,9 +29,9 @@ async function getTeamData(sport, league, team) {
 };
 
 function addCompetition (main, teamData) {
-  let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
-  let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
-  let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
+  let gameStatus = teamData.status.type.shortDetail;
+  let homeTeamPath = teamData.competitors[0];
+  let awayTeamPath = teamData.competitors[1];
   // let htCode = homeTeamPath.team.abbreviation;
   // let htScore = homeTeamPath.score.displayValue;
   // let atCode = awayTeamPath.team.abbreviation;
@@ -83,7 +83,7 @@ async function createWidget(config) {
 
   for (const fav of favorites) {
     let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-    addCompetition(main, teamData);
+    addCompetition(main, teamData.team.nextEvent[0].competitions[0]);
   }
 
   return widget
