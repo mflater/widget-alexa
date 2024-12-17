@@ -83,30 +83,6 @@ async function createWidget(config) {
     }
 
     // @ts-ignore
-    // let table = new UITable();
-    // let rowOne = new UITableRow();
-    // let rowTwo = new UITableRow(); 
-    
-    // let cellOne = rowOne.addText("test 1");
-    // cellOne.widthWeight = 100;
-    // rowOne.addCell(cellOne);
-
-    // let cellThree = rowOne.addText("test 3");
-    // cellThree.widthWeight = 100;
-    // rowOne.addCell(cellThree);
-
-    // let cellTwo = rowTwo.addText("test 2");
-    // cellTwo.widthWeight = 100;
-    // rowTwo.addCell(cellTwo);
-
-    // let cellFour = rowTwo.addText("test 4");
-    // cellFour.widthWeight = 100;
-    // rowTwo.addCell(cellFour);
-
-    // table.addRow(rowOne);
-    // table.addRow(rowTwo);
-
-    // await QuickLook.present(table)
     let cellSize = new Size(100, 40);
     let widget = new ListWidget();
     let main = widget.addStack();
@@ -133,30 +109,7 @@ async function createWidget(config) {
     let homeTeamScore = homeTeam.addText("60");
     homeTeamScore.rightAlignText();
   
-   // let topLeft = rowOne.addStack();
-  
-    //topLeft.addText("12345");
-    //topLeft.size = cellSize;
-    //topLeft.centerAlignContent();
-    //topLeft.backgroundColor = new Color('#001100');
 
-    // let bottomLeft = rowOne.addStack();
-    // bottomLeft.addText("34567");
-    // bottomLeft.size = cellSize;
-    // bottomLeft.centerAlignContent();
-
-    // let rowTwo = main.addStack();
-    // rowTwo.layoutVertically();
-  
-    // let topRight = rowTwo.addStack();
-    // topRight.addText("23456");
-    // topRight.size = cellSize;
-    // topRight.centerAlignContent();
-
-    // let bottomRight = rowTwo.addStack();
-    // bottomRight.addText("45678");
-    // bottomRight.size = cellSize;
-    // bottomRight.centerAlignContent();
     return widget
 };
 
