@@ -31,14 +31,14 @@ async function getTeamData(sport, league, team) {
 function addCompetition (main, teamData) {
   let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
   let htCode = homeTeamPath.team.abbreviation;
-  let htScore = homeTeamPath.score;
+  let htScore = homeTeamPath.score.value;
 
   // let htCode = "xx";
   // let htScore = 44;
 
   let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let atCode = awayTeamPath.team.abbreviation;
-  let atScore = awayTeamPath.score;
+  let atScore = awayTeamPath.score.value;
 
   // let atCode = "dd";
   // let atScore = 33;
@@ -50,15 +50,15 @@ function addCompetition (main, teamData) {
   let homeTeam = competition.addStack();
   homeTeam.layoutHorizontally();
 
-  awayTeam.size = new Size(60, 20);
-  awayTeam.spacing = 20;
+  awayTeam.size = new Size(100, 20);
+  awayTeam.spacing = 40;
   let awayTeamCode = awayTeam.addText(atCode);
   awayTeamCode.leftAlignText();
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.rightAlignText();
 
-  homeTeam.size = new Size(60, 20);
-  homeTeam.spacing = 20;
+  homeTeam.size = new Size(100, 20);
+  homeTeam.spacing = 40;
   let homeTeamCode = homeTeam.addText(htCode);
   homeTeamCode.leftAlignText();
   let homeTeamScore = homeTeam.addText("" + htScore);
