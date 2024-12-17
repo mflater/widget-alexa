@@ -8,10 +8,10 @@ const favorites = [{
   "sport":"football", 
   "league":"nfl", 
   "team":"SF"
-// },{
-//   "sport":"football",
-//   "league":"nfl",
-//   "team":"LV"
+},{
+  "sport":"football",
+  "league":"nfl",
+  "team":"LV"
 }];
 async function getTeamData(sport, league, team) {
   const baseUrl = "https://site.api.espn.com/apis/site/v2/sports/";
