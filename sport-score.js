@@ -122,6 +122,8 @@ async function createWidget(config) {
     awayTeam.size = new Size(60, 20);
     let awayTeamCode = awayTeam.addText("LAR");
     awayTeamCode.leftAlignText();
+
+    awayTeam.addSpacer(60);
     let awayTeamScore = awayTeam.addText("6");
     awayTeamScore.rightAlignText();
 
