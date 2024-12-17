@@ -3,6 +3,10 @@
 // icon-color: pink; icon-glyph: magic;
 
 //@ts-check
+// Fonts
+const smallFont = new Font('Apple SD Gothic Neo', 8);
+const largeFont = new Font('Apple SD Gothic Neo', 12);
+
 
 const favorites = [{
   "sport":"football", 
@@ -40,13 +44,19 @@ function addCompetition (main, teamData) {
   
   let competition = main.addStack();
   competition.layoutVertically();
-  let displayStatus = competition.addStack();
-  displayStatus.addText(gameStatus);
   let awayTeam = competition.addStack();
   awayTeam.layoutHorizontally();
   let homeTeam = competition.addStack();
   homeTeam.layoutHorizontally();
 
+  Set status info
+  let displayStatus = competition.addStack();
+  let statusText = displayStatus.addText(gameStatus);
+  statusText.font = smallFont;
+  displayStatus.centerAlignText();
+  
+
+  // Set away team info
   awayTeam.size = new Size(100, 20);
   awayTeam.spacing = 40;
   let awayTeamCode = awayTeam.addText(atCode);
@@ -54,12 +64,14 @@ function addCompetition (main, teamData) {
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.rightAlignText();
 
+  // Set home team info
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
   let homeTeamCode = homeTeam.addText(htCode);
   homeTeamCode.leftAlignText();
   let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.rightAlignText();
+
 }
 
 /**
