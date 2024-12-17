@@ -65,26 +65,6 @@ function addCompetition (main, teamData) {
   homeTeamScore.rightAlignText();
 }
 
-function getHomeTeam (competitors) {
-  if (competitors[0].homeAway == "home"){
-    return competitors[0].team.abbreviation;
-  } 
-  return competitors[1].team.abbreviation;
-}
-
-function getAwayTeam (competitors) {
-  if (competitors[0].homeAway == "away"){
-    return competitors[0].team.abbreviation;
-  } 
-  return competitors[1].team.abbreviation;
-}
-
- async function processArray(array) {
-    for (const item of array) {
-      await doSomethingAsync(item);
-    }
-  }
-
 /**
  * Create the widget
  * @param {{widgetParameter: string, debug: string}} config widget configuration
@@ -105,28 +85,13 @@ async function createWidget(config) {
   let main = widget.addStack();
   main.layoutHorizontally();
 
-    for (const fav of favorites) {
-      let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-      addCompetition(main, teamData);
-    }
-    // favorites.forEach(function (fav) {
-    //   let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-    //   // log(JSON.stringify(teamData, null, 2));
-    //   addCompetition(main, teamData);
-    // })
-     // addCompetition(main, null);
-
-  // await processArray(main);
+  for (const fav of favorites) {
+    let teamData = await getTeamData(fav.sport, fav.league, fav.team);
+    addCompetition(main, teamData);
+  }
 
   return widget
 };
-
-async function processArray(main) {
-    for (const fav of favorites) {
-      let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-      addCompetition(main, teamData);
-    }
-  }
 
 
 
