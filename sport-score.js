@@ -112,32 +112,49 @@ async function createWidget(config) {
     let main = widget.addStack();
     main.layoutHorizontally();
   
-    let rowOne = main.addStack();
-    rowOne.layoutVertically();
-    let topLeft = rowOne.addStack();
+    let competitionOne = main.addStack();
+    competitionOne.layoutVertically();
+    awayTeam = competitionOne.addStack();
+    awayTeam.layoutHorizontally();
+    homeTeam = competitionOne.addStack();
+    homeTeam.layoutHorizontally();
+
+    awayTeam.size = new Size(60, 20);
+    let awayTeamCode = awayTeam.addText("LAR");
+    awayTeamCode.leftAlignText();
+    let awayTeamScore = awayTeam.addText("6");
+    awayTeamScore.rightAlignText();
+
+    homeTeam.size = new Size(60, 20);
+    let homeTeamCode = homeTeam.addText("SF");
+    homeTeamCode.leftAlignText();
+    let homeTeamScore = homeTeam.addText("60");
+    homeTeamScore.rightAlignText();
   
-    topLeft.addText("12345");
-    topLeft.size = cellSize;
-    topLeft.centerAlignContent();
-    topLeft.backgroundColor = new Color('#001100');
-
-    let bottomLeft = rowOne.addStack();
-    bottomLeft.addText("34567");
-    bottomLeft.size = cellSize;
-    bottomLeft.centerAlignContent();
-
-    let rowTwo = main.addStack();
-    rowTwo.layoutVertically();
+   // let topLeft = rowOne.addStack();
   
-    let topRight = rowTwo.addStack();
-    topRight.addText("23456");
-    topRight.size = cellSize;
-    topRight.centerAlignContent();
+    //topLeft.addText("12345");
+    //topLeft.size = cellSize;
+    //topLeft.centerAlignContent();
+    //topLeft.backgroundColor = new Color('#001100');
 
-    let bottomRight = rowTwo.addStack();
-    bottomRight.addText("45678");
-    bottomRight.size = cellSize;
-    bottomRight.centerAlignContent();
+    // let bottomLeft = rowOne.addStack();
+    // bottomLeft.addText("34567");
+    // bottomLeft.size = cellSize;
+    // bottomLeft.centerAlignContent();
+
+    // let rowTwo = main.addStack();
+    // rowTwo.layoutVertically();
+  
+    // let topRight = rowTwo.addStack();
+    // topRight.addText("23456");
+    // topRight.size = cellSize;
+    // topRight.centerAlignContent();
+
+    // let bottomRight = rowTwo.addStack();
+    // bottomRight.addText("45678");
+    // bottomRight.size = cellSize;
+    // bottomRight.centerAlignContent();
     return widget
 };
 
