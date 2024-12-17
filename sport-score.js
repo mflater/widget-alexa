@@ -30,12 +30,13 @@ async function getTeamData(sport, league, team) {
 
 function addCompetition (main, teamData) {
   let gameStatus = teamData.status.type.shortDetail;
+  let gameState = teamData.status.type.state;
   let homeTeamPath = teamData.competitors[0];
   let awayTeamPath = teamData.competitors[1];
-  // let htCode = homeTeamPath.team.abbreviation;
-  // let htScore = homeTeamPath.score.displayValue;
-  // let atCode = awayTeamPath.team.abbreviation;
-  // let atScore = awayTeamPath.score.displayValue;
+  let htCode = homeTeamPath.team.abbreviation;
+  let htScore = gameState == "pre" ? 0 : homeTeamPath.score.value;
+  let atCode = awayTeamPath.team.abbreviation;
+  let atScore = gameState == "pre" ? 0 : awayTeamPath.score.value;
   
   let competition = main.addStack();
   competition.layoutVertically();
@@ -48,16 +49,16 @@ function addCompetition (main, teamData) {
 
   awayTeam.size = new Size(100, 20);
   awayTeam.spacing = 40;
-  let awayTeamCode = awayTeam.addText(awayTeamPath.team.abbreviation);
+  let awayTeamCode = awayTeam.addText(atCode);
   awayTeamCode.leftAlignText();
-  let awayTeamScore = awayTeam.addText("" + awayTeamPath.score.value);
+  let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.rightAlignText();
 
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
-  let homeTeamCode = homeTeam.addText(homeTeamPath.team.abbreviation);
+  let homeTeamCode = homeTeam.addText(htCode);
   homeTeamCode.leftAlignText();
-  let homeTeamScore = homeTeam.addText("" + homeTeamPath.score.value);
+  let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.rightAlignText();
 }
 
