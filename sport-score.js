@@ -94,10 +94,10 @@ async function createWidget(config) {
     let main = widget.addStack();
     main.layoutHorizontally();
 
-    favorites.forEach(fav) {
+    favorites.forEach(fav => {
       await teamData = getTeamData(fav.sport, fav.league, fav.team);
       addCompetition(main, teamData);
-    }
+    })
     
   
 
