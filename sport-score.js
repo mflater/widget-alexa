@@ -50,14 +50,14 @@ function addCompetition (main, teamData) {
   awayTeam.spacing = 40;
   let awayTeamCode = awayTeam.addText(awayTeamPath.team.abbreviation);
   awayTeamCode.leftAlignText();
-  let awayTeamScore = awayTeam.addText(awayTeamPath.score.value);
+  let awayTeamScore = awayTeam.addText("" + awayTeamPath.score.value);
   awayTeamScore.rightAlignText();
 
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
   let homeTeamCode = homeTeam.addText(homeTeamPath.team.abbreviation);
   homeTeamCode.leftAlignText();
-  let homeTeamScore = homeTeam.addText(homeTeamPath.score.value);
+  let homeTeamScore = homeTeam.addText("" + homeTeamPath.score.value);
   homeTeamScore.rightAlignText();
 }
 
