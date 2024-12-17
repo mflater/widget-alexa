@@ -116,7 +116,7 @@ async function createWidget(config) {
     // })
      // addCompetition(main, null);
 
-  processArray(main);
+  await processArray(main);
 
   return widget
 };
