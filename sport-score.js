@@ -105,25 +105,25 @@ async function createWidget(config) {
   let main = widget.addStack();
   main.layoutHorizontally();
 
-    // for (const fav of favorites) {
-    //   await teamData = getTeamData(fav.sport, fav.league, fav.team);
-    //   addCompetition(main, teamData);
-    // }
+    for (const fav of favorites) {
+      let teamData = await getTeamData(fav.sport, fav.league, fav.team);
+      addCompetition(main, teamData);
+    }
     // favorites.forEach(function (fav) {
-    //   await teamData = getTeamData(fav.sport, fav.league, fav.team);
+    //   let teamData = await getTeamData(fav.sport, fav.league, fav.team);
     //   // log(JSON.stringify(teamData, null, 2));
     //   addCompetition(main, teamData);
     // })
      // addCompetition(main, null);
 
-  await processArray(main);
+  // await processArray(main);
 
   return widget
 };
 
 async function processArray(main) {
     for (const fav of favorites) {
-      await teamData = getTeamData(fav.sport, fav.league, fav.team);
+      let teamData = await getTeamData(fav.sport, fav.league, fav.team);
       addCompetition(main, teamData);
     }
   }
