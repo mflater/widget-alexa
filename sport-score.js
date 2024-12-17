@@ -33,8 +33,8 @@ function addCompetition (main, teamData) {
   let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
   let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let htCode = homeTeamPath.team.abbreviation;
-  let atCode = awayTeamPath.team.abbreviation;
   let htScore = homeTeamPath.score.displayValue;
+  let atCode = awayTeamPath.team.abbreviation;
   let atScore = awayTeamPath.score.displayValue;
   
   let competition = main.addStack();
