@@ -62,7 +62,7 @@ function addCompetition (main, teamData) {
   // Set away team info
   awayTeam.size = new Size(100, 20);
   awayTeam.spacing = 40;
-  let awayTeamCode = awayTeam.addText(atCode);
+  let awayTeamCode = awayTeam.addText(atCode.padEnd(3, " "));
   awayTeamCode.font = largeFont;
   awayTeamCode.leftAlignText();
   let awayTeamScore = awayTeam.addText("" + atScore);
@@ -72,7 +72,7 @@ function addCompetition (main, teamData) {
   // Set home team info
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
-  let homeTeamCode = homeTeam.addText(htCode);
+  let homeTeamCode = homeTeam.addText(htCode.padEnd(3, " "));
   homeTeamCode.font = largeFont;
   homeTeamCode.leftAlignText();
   let homeTeamScore = homeTeam.addText("" + htScore);
