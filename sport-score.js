@@ -4,8 +4,8 @@
 
 //@ts-check
 // Fonts
-let smallFont = new Font("AppleSDGothicNeo-Thin", 12);
-let largeFont = new Font("AppleSDGothicNeo-Thin", 16);
+let smallFont = new Font("AppleSDGothicNeo-Thin", 16);
+let largeFont = new Font("AppleSDGothicNeo-Thin", 22);
 
 
 const favorites = [{
@@ -43,6 +43,7 @@ function addCompetition (main, teamData) {
   let atScore = gameState == "pre" ? 0 : awayTeamPath.score.value;
   
   let competition = main.addStack();
+  competition.borderWidth = 1;
   competition.layoutVertically();
   let awayTeam = competition.addStack();
   awayTeam.layoutHorizontally();
