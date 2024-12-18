@@ -4,7 +4,7 @@
 
 //@ts-check
 // Fonts
-let smallFont = new Font("AppleSDGothicNeo-Thin", 16);
+let smallFont = new Font("AppleSDGothicNeo-Thin", 14);
 let largeFont = new Font("AppleSDGothicNeo-Thin", 22);
 
 
@@ -43,11 +43,13 @@ function addCompetition (main, teamData) {
   let atScore = gameState == "pre" ? 0 : awayTeamPath.score.value;
   
   let competition = main.addStack();
-  competition.borderWidth = 1;
+  // competition.borderWidth = 1;
   competition.layoutVertically();
   let awayTeam = competition.addStack();
+  awayTeam.borderWidth = 1;
   awayTeam.layoutHorizontally();
   let homeTeam = competition.addStack();
+  homeTeam.borderWidth = 1;
   homeTeam.layoutHorizontally();
 
   // Set status info
