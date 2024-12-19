@@ -4,8 +4,8 @@
 
 //@ts-check
 // Fonts
-let smallFont = new Font("HelveticaNeue-Light", 14);
-let largeFont = new Font("AppleSDGothicNeo-SemiBold", 26);
+let smallFont = new Font("HelveticaNeue-Light", 12);
+let largeFont = new Font("AppleSDGothicNeo-SemiBold", 22);
 
 
 const favorites = [{
@@ -32,14 +32,29 @@ async function getTeamData(sport, league, team) {
   return response;
 };
 
+async function getTeamLogo(url, team) {
+  const url = url + '/' + team + '.png';
+
+  // Initialize new request
+  const request = new Request(url);
+
+  // Execute the request and parse the response as json
+  const image = await request.loadImage();
+
+  // Return the returned launch data
+  return image;
+}
+
 function addCompetition (main, teamData) {
-  let gameStatus = teamData.status.type.shortDetail;
-  let gameState = teamData.status.type.state;
-  let homeTeamPath = teamData.competitors[0];
-  let awayTeamPath = teamData.competitors[1];
+  let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
+  let gameState = teamData.team.nextEvent[0].competitions[0].status.type.state;
+  let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
+  let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let htCode = homeTeamPath.team.abbreviation;
+  let htImage = homeTeamPath.team.logos[0].href;
   let htScore = gameState == "pre" ? 0 : homeTeamPath.score.value;
   let atCode = awayTeamPath.team.abbreviation;
+  let atImage = awayTeamPath.team.logos[0].href;
   let atScore = gameState == "pre" ? 0 : awayTeamPath.score.value;
   
   let competition = main.addStack();
@@ -63,9 +78,10 @@ function addCompetition (main, teamData) {
   // Set away team info
   awayTeam.size = new Size(100, 20);
   awayTeam.spacing = 40;
-  let awayTeamCode = awayTeam.addText(atCode.padEnd(3, " "));
-  awayTeamCode.font = largeFont;
-  awayTeamCode.leftAlignText();
+  let awayTeamImage = awayTeam.addImage(atImage);
+  // awayTeamCode.font = largeFont;
+  // awayTeamCode.leftAlignText();
+  awayTeamImage.imageSize = new Size(30, 30);
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.font = largeFont;
   awayTeamScore.rightAlignText();
@@ -73,9 +89,10 @@ function addCompetition (main, teamData) {
   // Set home team info
   homeTeam.size = new Size(100, 20);
   homeTeam.spacing = 40;
-  let homeTeamCode = homeTeam.addText(htCode.padEnd(3, " "));
-  homeTeamCode.font = largeFont;
-  homeTeamCode.leftAlignText();
+  let homeTeamImage = homeTeam.addImage(htImage);
+  // homeTeamCode.font = largeFont;
+  // homeTeamCode.leftAlignText();
+  homeTeamImage.imageSize = new Size(30, 30);
   let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.font = largeFont;
   homeTeamScore.rightAlignText();
@@ -104,7 +121,7 @@ async function createWidget(config) {
 
   for (const fav of favorites) {
     let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-    addCompetition(main, teamData.team.nextEvent[0].competitions[0]);
+    addCompetition(main, teamData);
   }
 
   return widget
