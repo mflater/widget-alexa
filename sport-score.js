@@ -32,9 +32,7 @@ async function getTeamData(sport, league, team) {
   return response;
 };
 
-async function getTeamLogo(url, team) {
-  const url = url + '/' + team + '.png';
-
+async function getTeamLogo(url) {
   // Initialize new request
   const request = new Request(url);
 
@@ -51,10 +49,10 @@ function addCompetition (main, teamData) {
   let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
   let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let htCode = homeTeamPath.team.abbreviation;
-  let htImage = homeTeamPath.team.logos[0].href;
+  let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
   let htScore = gameState == "pre" ? 0 : homeTeamPath.score.value;
   let atCode = awayTeamPath.team.abbreviation;
-  let atImage = awayTeamPath.team.logos[0].href;
+  let atImage = await getTeamLogo(awayTeamPath.team.logos[0].href);
   let atScore = gameState == "pre" ? 0 : awayTeamPath.score.value;
   
   let competition = main.addStack();
