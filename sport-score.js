@@ -119,7 +119,7 @@ async function createWidget(config) {
 
   for (const fav of favorites) {
     let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-    addCompetition(main, teamData);
+    await addCompetition(main, teamData);
   }
 
   return widget
