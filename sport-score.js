@@ -43,7 +43,7 @@ async function getTeamLogo(url) {
   return image;
 }
 
-function addCompetition (main, teamData) {
+async function addCompetition (main, teamData) {
   let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
   let gameState = teamData.team.nextEvent[0].competitions[0].status.type.state;
   let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
