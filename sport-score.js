@@ -62,9 +62,9 @@ function getTeamRecord (scoreboard, competition) {
   for (const event of scoreboard.events) {
     if (event.id == competition.id) {
       if (event.competitions[0].competitors[0].id == competition.teamId) {
-        score = event.competitions[0].competitors[0].records[0].summary;
+        record = event.competitions[0].competitors[0].records[0].summary;
       } else {
-        score = event.competitions[0].competitors[1].records[0].summary;
+        record = event.competitions[0].competitors[1].records[0].summary;
       }
     }
   }
