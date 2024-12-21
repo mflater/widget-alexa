@@ -43,7 +43,7 @@ async function getTeamLogo(url) {
   return image;
 }
 
-function getCurrentScore (competition) {
+async function getCurrentScore (competition) {
   let id = competition.id;
   let teamId = competition.teamId;
   let sport = competition.sport;
@@ -75,7 +75,7 @@ async function addCompetition (main, teamData, info) {
   let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let htCode = homeTeamPath.team.abbreviation;
   let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
-  let htScore = gameState == "pre" ? 0 : getCurrentScore({
+  let htScore = gameState == "pre" ? 0 : await getCurrentScore({
     "id":teamData.team.nextEvent[0].id,
     "teamId":teamData.team.nextEvent[0].competitions[0].competitors[0].id,
     "sport": info.sport,
@@ -83,7 +83,7 @@ async function addCompetition (main, teamData, info) {
   });
   let atCode = awayTeamPath.team.abbreviation;
   let atImage = await getTeamLogo(awayTeamPath.team.logos[0].href);
-  let atScore = gameState == "pre" ? 0 : getCurrentScore({
+  let atScore = gameState == "pre" ? 0 : await getCurrentScore({
     "id":teamData.team.nextEvent[0].id,
     "teamId":teamData.team.nextEvent[0].competitions[0].competitors[1].id,
     "sport": info.sport,
