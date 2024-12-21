@@ -143,7 +143,7 @@ async function addCompetition (main, teamData, info) {
   
 
   // Set away team info
-  awayTeam.size = new Size(110, 40);
+  awayTeam.size = new Size(110, 45);
   awayTeam.spacing = 40;
   let awayImageRecordStack = awayTeam.addStack();
   awayImageRecordStack.layoutVertically();
@@ -156,12 +156,16 @@ async function addCompetition (main, teamData, info) {
   awayTeamScore.rightAlignText();
 
   // Set home team info
-  homeTeam.size = new Size(110, 30);
+  homeTeam.size = new Size(110, 45);
   homeTeam.spacing = 40;
-  let homeTeamImage = homeTeam.addImage(htImage);
+  let homeImageRecordStack = homeTeam.addStack();
+  homeImageRecordStack.layoutVertically();
+  let homeTeamImage = homeImageRecordStack.addImage(htImage);
   homeTeamImage.imageSize = new Size(30, 30);
-  let homeTeamScore = gameState == "pre" ? homeTeam.addText(htRecord) : homeTeam.addText("" + htScore);
-  homeTeamScore.font = gameState == "pre" ? smallFont : largeFont;
+  homeTeamRecord = homeImageRecordStack.addText(htRecord);
+  homeTeamRecord.font = smallFont;
+  let homeTeamScore = homeTeam.addText("" + htScore);
+  homeTeamScore.font = largeFont;
   homeTeamScore.rightAlignText();
 
 }
