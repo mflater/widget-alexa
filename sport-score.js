@@ -115,17 +115,17 @@ async function addCompetition (main, teamData, info) {
       "id":teamData.team.nextEvent[0].id,
       "teamId":awayTeamPath.id,
     });
-  } else {
-    htRecord = getTeamRecord(scoreboard, {
-      "id":teamData.team.nextEvent[0].id,
-      "teamId":homeTeamPath.id,
-    });
+  } 
+  htRecord = getTeamRecord(scoreboard, {
+    "id":teamData.team.nextEvent[0].id,
+    "teamId":homeTeamPath.id,
+  });
 
-    atRecord = getTeamRecord(scoreboard, {
-      "id":teamData.team.nextEvent[0].id,
-      "teamId":awayTeamPath.id,
-    });
-  }
+  atRecord = getTeamRecord(scoreboard, {
+    "id":teamData.team.nextEvent[0].id,
+    "teamId":awayTeamPath.id,
+  });
+  
   
   let competition = main.addStack();
   competition.layoutVertically();
@@ -143,12 +143,16 @@ async function addCompetition (main, teamData, info) {
   
 
   // Set away team info
-  awayTeam.size = new Size(110, 30);
+  awayTeam.size = new Size(110, 40);
   awayTeam.spacing = 40;
-  let awayTeamImage = awayTeam.addImage(atImage);
+  let awayImageRecordStack = awayTeam.addStack();
+  awayImageRecordStack.layoutVertically();
+  let awayTeamImage = awayImageRecordStack.addImage(atImage);
   awayTeamImage.imageSize = new Size(30, 30);
-  let awayTeamScore = gameState == "pre" ? awayTeam.addText(atRecord) : awayTeam.addText("" + atScore);
-  awayTeamScore.font = gameState == "pre" ? smallFont : largeFont;
+  awayTeamRecord = awayImageRecordStack.addText(atRecord);
+  awayTeamRecord.font = smallFont;
+  let awayTeamScore = awayTeam.addText("" + atScore);
+  awayTeamScore.font = largeFont;
   awayTeamScore.rightAlignText();
 
   // Set home team info
