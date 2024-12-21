@@ -43,30 +43,30 @@ async function getTeamLogo(url) {
   return image;
 }
 
-async function getCurrentScore (competition) {
-  let id = competition.id;
-  let teamId = competition.teamId;
-  let sport = competition.sport;
-  let league = competition.league;
-  let url = 'https://site.api.espn.com/apis/site/v2/sports/' + sport + '/' + league + '/scoreboard';
-  let score = 0;
+// async function getCurrentScore (competition) {
+//   let id = competition.id;
+//   let teamId = competition.teamId;
+//   let sport = competition.sport;
+//   let league = competition.league;
+//   let url = 'https://site.api.espn.com/apis/site/v2/sports/' + sport + '/' + league + '/scoreboard';
+//   let score = 0;
 
-  // Initialize new request
-  const request = new Request(url);
+//   // Initialize new request
+//   const request = new Request(url);
 
-  // Execute the request and parse the response as json
-  const scoreboard = await request.loadJSON();
+//   // Execute the request and parse the response as json
+//   const scoreboard = await request.loadJSON();
 
-  for (const event of scoreboard.events) {
-    if (event.id == id) {
-      if (event.competitions[0].competitors[0].id == teamId) {
-        score = event.competitions[0].competitors[0].score;
-      } else {
-        score = event.competitions[0].competitors[1].score;
-      }
-   }
-    return score;
-}
+//   for (const event of scoreboard.events) {
+//     if (event.id == id) {
+//       if (event.competitions[0].competitors[0].id == teamId) {
+//         score = event.competitions[0].competitors[0].score;
+//       } else {
+//         score = event.competitions[0].competitors[1].score;
+//       }
+//    }
+//     return score;
+// }
 
 async function addCompetition (main, teamData, info) {
   let competition = teamData.team.nextEvent[0].competitions[0];
