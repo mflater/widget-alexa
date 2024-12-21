@@ -69,23 +69,26 @@ async function getCurrentScore (competition) {
 }
 
 async function addCompetition (main, teamData, info) {
-  let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
-  let gameState = teamData.team.nextEvent[0].competitions[0].status.type.state;
-  let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
-  let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
-  let htCode = homeTeamPath.team.abbreviation;
+  let competition = teamData.team.nextEvent[0].competitions[0];
+  let gameStatus = competition.status.type.shortDetail;
+  let gameState = competition.status.type.state;
+  let homeTeamPath = competition.competitors[0];
+  let awayTeamPath = competition.competitors[1];
+  
+  // let htCode = homeTeamPath.team.abbreviation;
   let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
   let htScore = gameState == "pre" ? 0 : await getCurrentScore({
     "id":teamData.team.nextEvent[0].id,
-    "teamId":teamData.team.nextEvent[0].competitions[0].competitors[0].id,
+    "teamId":homeTeamPath.id,
     "sport": info.sport,
     "league":info.league
   });
-  let atCode = awayTeamPath.team.abbreviation;
+  
+  // let atCode = awayTeamPath.team.abbreviation;
   let atImage = await getTeamLogo(awayTeamPath.team.logos[0].href);
   let atScore = gameState == "pre" ? 0 : await getCurrentScore({
     "id":teamData.team.nextEvent[0].id,
-    "teamId":teamData.team.nextEvent[0].competitions[0].competitors[1].id,
+    "teamId":awayTeamPath.id,
     "sport": info.sport,
     "league":info.league
   });
