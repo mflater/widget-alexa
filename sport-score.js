@@ -43,7 +43,7 @@ async function getTeamLogo(url) {
   return image;
 }
 
-async function getCurrentScore (scoreboard, competition) {
+function getCurrentScore (scoreboard, competition) {
   let score = 0; 
   for (const event of scoreboard.events) {
     if (event.id == competition.id) {
@@ -57,7 +57,7 @@ async function getCurrentScore (scoreboard, competition) {
   return score;
 }
 
-getTeamRecord (scoreboard, competition) {
+function getTeamRecord (scoreboard, competition) {
   let record = '0-0'; 
   for (const event of scoreboard.events) {
     if (event.id == competition.id) {
@@ -99,7 +99,7 @@ async function addCompetition (main, teamData, info) {
   let htRecord = '';
   let atRecord = '';
   // The scoreboard has in-game data and team record data.
-  scoreboard = await getScoreboard({
+  let scoreboard = await getScoreboard({
     "sport": info.sport,
     "league":info.league
   });
