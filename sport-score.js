@@ -11,7 +11,7 @@ let largeFont = new Font("AppleSDGothicNeo-SemiBold", 22);
 const favorites = [{
   "sport":"football", 
   "league":"nfl", 
-  "team":"SF"
+  "team":"KC"
 },{
   "sport":"basketball",
   "league":"nba",
