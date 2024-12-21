@@ -75,35 +75,32 @@ async function addCompetition (main, teamData, info) {
   let homeTeamPath = gameData.competitors[0];
   let awayTeamPath = gameData.competitors[1];
   
-  // let htCode = homeTeamPath.team.abbreviation;
   let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
-  // let htScore = 11;
-  let htScore = gameState == "pre" ? 0 : await getCurrentScore({
-    "id":teamData.team.nextEvent[0].id,
-    "teamId":homeTeamPath.id,
-    "sport": info.sport,
-    "league":info.league
-  });
-
-  // let atScore = 55;
-  // let atCode = awayTeamPath.team.abbreviation;
   let atImage = await getTeamLogo(awayTeamPath.team.logos[0].href);
-  let atScore = gameState == "pre" ? 0 : await getCurrentScore({
-    "id":teamData.team.nextEvent[0].id,
-    "teamId":awayTeamPath.id,
-    "sport": info.sport,
-    "league":info.league
-  });
+  
+  let htScore = 0;
+  let atScore = 0;
+  if (gameState != "pre") {
+    htScore = await getCurrentScore({
+      "id":teamData.team.nextEvent[0].id,
+      "teamId":homeTeamPath.id,
+      "sport": info.sport,
+      "league":info.league
+    });
+    atScore = await getCurrentScore({
+      "id":teamData.team.nextEvent[0].id,
+      "teamId":awayTeamPath.id,
+      "sport": info.sport,
+      "league":info.league
+    });
+  }
   
   let competition = main.addStack();
-  // competition.borderWidth = 1;
   competition.layoutVertically();
   competition.spacing = 10;
   let awayTeam = competition.addStack();
-  // awayTeam.borderWidth = 1;
   awayTeam.layoutHorizontally();
   let homeTeam = competition.addStack();
-  // homeTeam.borderWidth = 1;
   homeTeam.layoutHorizontally();
 
   // Set status info
@@ -117,8 +114,6 @@ async function addCompetition (main, teamData, info) {
   awayTeam.size = new Size(100, 30);
   awayTeam.spacing = 40;
   let awayTeamImage = awayTeam.addImage(atImage);
-  // awayTeamCode.font = largeFont;
-  // awayTeamCode.leftAlignText();
   awayTeamImage.imageSize = new Size(30, 30);
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.font = largeFont;
@@ -128,8 +123,6 @@ async function addCompetition (main, teamData, info) {
   homeTeam.size = new Size(100, 30);
   homeTeam.spacing = 40;
   let homeTeamImage = homeTeam.addImage(htImage);
-  // homeTeamCode.font = largeFont;
-  // homeTeamCode.leftAlignText();
   homeTeamImage.imageSize = new Size(30, 30);
   let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.font = largeFont;
