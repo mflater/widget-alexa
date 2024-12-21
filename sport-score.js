@@ -43,17 +43,52 @@ async function getTeamLogo(url) {
   return image;
 }
 
-async function addCompetition (main, teamData) {
+function getCurrentScore (competition) {
+  let id = competition.id;
+  let teamId = competition.teamId;
+  let sport = competition.sport;
+  let league = competition.league;
+  let url = 'https://site.api.espn.com/apis/site/v2/sports/' + sport + '/' + league + '/scoreboard';
+  let score = 0;
+
+  // Initialize new request
+  const request = new Request(url);
+
+  // Execute the request and parse the response as json
+  const scoreboard = await request.loadJSON();
+
+  for (const event of scoreboard.events) {
+    if (event.id == id) {
+      if (event.competitions[0].competitors[0].id == teamId) {
+        score = event.competitions[0].competitors[0].score;
+      } else {
+        score = event.competitions[0].competitors[1].score;
+      }
+   }
+    return score;
+}
+
+async function addCompetition (main, teamData, info) {
   let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
   let gameState = teamData.team.nextEvent[0].competitions[0].status.type.state;
   let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
   let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
   let htCode = homeTeamPath.team.abbreviation;
   let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
-  let htScore = gameState == "pre" ? 0 : homeTeamPath.score.value;
+  let htScore = gameState == "pre" ? 0 : getCurrentScore({
+    "id":teamData.team.nextEvent[0].id,
+    "teamId":teamData.team.nextEvent[0].competitions[0].competitors[0].id,
+    "sport": info.sport,
+    "league":info.league
+  });
   let atCode = awayTeamPath.team.abbreviation;
   let atImage = await getTeamLogo(awayTeamPath.team.logos[0].href);
-  let atScore = gameState == "pre" ? 0 : awayTeamPath.score.value;
+  let atScore = gameState == "pre" ? 0 : getCurrentScore({
+    "id":teamData.team.nextEvent[0].id,
+    "teamId":teamData.team.nextEvent[0].competitions[0].competitors[1].id,
+    "sport": info.sport,
+    "league":info.league
+  });
   
   let competition = main.addStack();
   // competition.borderWidth = 1;
@@ -119,7 +154,7 @@ async function createWidget(config) {
 
   for (const fav of favorites) {
     let teamData = await getTeamData(fav.sport, fav.league, fav.team);
-    await addCompetition(main, teamData);
+    await addCompetition(main, teamData, fav);
   }
 
   return widget
