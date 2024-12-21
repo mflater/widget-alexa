@@ -43,16 +43,8 @@ async function getTeamLogo(url) {
   return image;
 }
 
-async function getCurrentScore (competition) {
-  let url = 'https://site.api.espn.com/apis/site/v2/sports/' + competition.sport + '/' + competition.league + '/scoreboard';
-  let score = 0;
-
-  // Initialize new request
-  const request = new Request(url);
-
-  // Execute the request and parse the response as json
-  const scoreboard = await request.loadJSON();
-
+async function getCurrentScore (scoreboard, competition) {
+  let score = 0; 
   for (const event of scoreboard.events) {
     if (event.id == competition.id) {
       if (event.competitions[0].competitors[0].id == competition.teamId) {
@@ -63,6 +55,33 @@ async function getCurrentScore (competition) {
     }
   }
   return score;
+}
+
+getTeamRecord (scoreboard, competition) {
+  let record = '0-0'; 
+  for (const event of scoreboard.events) {
+    if (event.id == competition.id) {
+      if (event.competitions[0].competitors[0].id == competition.teamId) {
+        score = event.competitions[0].competitors[0].records[0].summary;
+      } else {
+        score = event.competitions[0].competitors[1].records[0].summary;
+      }
+    }
+  }
+  return record;
+}
+
+async function getScoreboard (competition) {
+  let url = 'https://site.api.espn.com/apis/site/v2/sports/' + competition.sport + '/' + competition.league + '/scoreboard';
+  let score = 0;
+
+  // Initialize new request
+  const request = new Request(url);
+
+  // Execute the request and parse the response as json
+  const scoreboard = await request.loadJSON();
+
+  return scoreboard;
 }
 
 async function addCompetition (main, teamData, info) {
@@ -77,18 +96,34 @@ async function addCompetition (main, teamData, info) {
   
   let htScore = 0;
   let atScore = 0;
+  let htRecord = '';
+  let atRecord = '';
+  // The scoreboard has in-game data and team record data.
+  scoreboard = await getScoreboard({
+    "sport": info.sport,
+    "league":info.league
+  });
+
+  // Game has started or ended, we need to get the score.
   if (gameState != "pre") {
-    htScore = await getCurrentScore({
+    htScore = getCurrentScore(scoreboard, {
       "id":teamData.team.nextEvent[0].id,
-      "teamId":homeTeamPath.id,
-      "sport": info.sport,
-      "league":info.league
+      "teamId":homeTeamPath.id
     });
-    atScore = await getCurrentScore({
+
+    atScore = getCurrentScore(scoreboard, {
       "id":teamData.team.nextEvent[0].id,
       "teamId":awayTeamPath.id,
-      "sport": info.sport,
-      "league":info.league
+    });
+  } else {
+    htRecord = getTeamRecord(scoreboard, {
+      "id":teamData.team.nextEvent[0].id,
+      "teamId":homeTeamPath.id,
+    });
+
+    atRecord = getTeamRecord(scoreboard, {
+      "id":teamData.team.nextEvent[0].id,
+      "teamId":awayTeamPath.id,
     });
   }
   
@@ -108,7 +143,7 @@ async function addCompetition (main, teamData, info) {
   
 
   // Set away team info
-  awayTeam.size = new Size(100, 30);
+  awayTeam.size = new Size(110, 30);
   awayTeam.spacing = 40;
   let awayTeamImage = awayTeam.addImage(atImage);
   awayTeamImage.imageSize = new Size(30, 30);
@@ -117,7 +152,7 @@ async function addCompetition (main, teamData, info) {
   awayTeamScore.rightAlignText();
 
   // Set home team info
-  homeTeam.size = new Size(100, 30);
+  homeTeam.size = new Size(110, 30);
   homeTeam.spacing = 40;
   let homeTeamImage = homeTeam.addImage(htImage);
   homeTeamImage.imageSize = new Size(30, 30);
