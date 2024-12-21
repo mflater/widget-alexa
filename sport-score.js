@@ -11,7 +11,7 @@ let largeFont = new Font("AppleSDGothicNeo-SemiBold", 22);
 const favorites = [{
   "sport":"football", 
   "league":"nfl", 
-  "team":"SF"
+  "team":"KC"
 },{
   "sport":"basketball",
   "league":"nba",
@@ -42,34 +42,28 @@ async function getTeamLogo(url) {
   // Return the returned launch data
   return image;
 }
+
 async function getCurrentScore (competition) {
-  
-  return 44;
+  let url = 'https://site.api.espn.com/apis/site/v2/sports/' + competition.sport + '/' + competition.league + '/scoreboard';
+  let score = 0;
+
+  // Initialize new request
+  const request = new Request(url);
+
+  // Execute the request and parse the response as json
+  const scoreboard = await request.loadJSON();
+
+  for (const event of scoreboard.events) {
+    if (event.id == competition.id) {
+      if (event.competitions[0].competitors[0].id == competition.teamId) {
+        score = event.competitions[0].competitors[0].score;
+      } else {
+        score = event.competitions[0].competitors[1].score;
+      }
+    }
+  }
+  return score;
 }
-// async function getCurrentScore (competition) {
-//   let id = competition.id;
-//   let teamId = competition.teamId;
-//   let sport = competition.sport;
-//   let league = competition.league;
-//   let url = 'https://site.api.espn.com/apis/site/v2/sports/' + sport + '/' + league + '/scoreboard';
-//   let score = 0;
-
-//   // Initialize new request
-//   const request = new Request(url);
-
-//   // Execute the request and parse the response as json
-//   const scoreboard = await request.loadJSON();
-
-//   for (const event of scoreboard.events) {
-//     if (event.id == id) {
-//       if (event.competitions[0].competitors[0].id == teamId) {
-//         score = event.competitions[0].competitors[0].score;
-//       } else {
-//         score = event.competitions[0].competitors[1].score;
-//       }
-//    }
-//     return score;
-// }
 
 async function addCompetition (main, teamData, info) {
   let gameData = teamData.team.nextEvent[0].competitions[0];
