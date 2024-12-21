@@ -70,16 +70,16 @@ async function getTeamLogo(url) {
 
 async function addCompetition (main, teamData, info) {
   // let competition = teamData.team.nextEvent[0].competitions[0];
-  let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
-  let gameState = teamData.team.nextEvent[0].competitions[0].status.type.state;
-  let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
-  let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
+  // let gameStatus = teamData.team.nextEvent[0].competitions[0].status.type.shortDetail;
+  // let gameState = teamData.team.nextEvent[0].competitions[0].status.type.state;
+  // let homeTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[0];
+  // let awayTeamPath = teamData.team.nextEvent[0].competitions[0].competitors[1];
 
-  // let competition = teamData.team.nextEvent[0].competitions[0];
-  // let gameStatus = competition.status.type.shortDetail;
-  // let gameState = competition.status.type.state;
-  // let homeTeamPath = competition.competitors[0];
-  // let awayTeamPath = competition.competitors[1];
+  let gameData = teamData.team.nextEvent[0].competitions[0];
+  let gameStatus = gameData.status.type.shortDetail;
+  let gameState = gameData.status.type.state;
+  let homeTeamPath = gameData.competitors[0];
+  let awayTeamPath = gameData.competitors[1];
   
   // let htCode = homeTeamPath.team.abbreviation;
   let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
