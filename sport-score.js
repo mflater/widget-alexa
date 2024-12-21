@@ -77,21 +77,23 @@ async function addCompetition (main, teamData, info) {
   
   // let htCode = homeTeamPath.team.abbreviation;
   let htImage = await getTeamLogo(homeTeamPath.team.logos[0].href);
-  let htScore = gameState == "pre" ? 0 : await getCurrentScore({
-    "id":teamData.team.nextEvent[0].id,
-    "teamId":homeTeamPath.id,
-    "sport": info.sport,
-    "league":info.league
-  });
-  
+  let htScore = 11;
+  // let htScore = gameState == "pre" ? 0 : await getCurrentScore({
+  //   "id":teamData.team.nextEvent[0].id,
+  //   "teamId":homeTeamPath.id,
+  //   "sport": info.sport,
+  //   "league":info.league
+  // });
+
+  let atScore = 55;
   // let atCode = awayTeamPath.team.abbreviation;
   let atImage = await getTeamLogo(awayTeamPath.team.logos[0].href);
-  let atScore = gameState == "pre" ? 0 : await getCurrentScore({
-    "id":teamData.team.nextEvent[0].id,
-    "teamId":awayTeamPath.id,
-    "sport": info.sport,
-    "league":info.league
-  });
+  // let atScore = gameState == "pre" ? 0 : await getCurrentScore({
+  //   "id":teamData.team.nextEvent[0].id,
+  //   "teamId":awayTeamPath.id,
+  //   "sport": info.sport,
+  //   "league":info.league
+  // });
   
   let competition = main.addStack();
   // competition.borderWidth = 1;
