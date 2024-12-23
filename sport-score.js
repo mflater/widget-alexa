@@ -11,7 +11,7 @@ let largeFont = new Font("AppleSDGothicNeo-SemiBold", 22);
 const favorites = [{
   "sport":"football", 
   "league":"nfl", 
-  "team":"KC"
+  "team":"SF"
 },{
   "sport":"basketball",
   "league":"nba",
@@ -150,6 +150,7 @@ async function addCompetition (main, teamData, info) {
   let awayTeamImage = awayImageRecordStack.addImage(atImage);
   awayTeamImage.imageSize = new Size(30, 30);
   awayTeamRecord = awayImageRecordStack.addText(atRecord);
+  awayTeamRecord.centerAlignText();
   awayTeamRecord.font = smallFont;
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.font = largeFont;
@@ -163,6 +164,7 @@ async function addCompetition (main, teamData, info) {
   let homeTeamImage = homeImageRecordStack.addImage(htImage);
   homeTeamImage.imageSize = new Size(30, 30);
   homeTeamRecord = homeImageRecordStack.addText(htRecord);
+  homeTeamRecord.centerAlignText();
   homeTeamRecord.font = smallFont;
   let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.font = largeFont;
