@@ -156,11 +156,11 @@ async function addCompetition (main, teamData, info) {
   awayTeamImageStack.addSpacer();
 
   let awayTeamRecordStack = awayImageRecordStack.addStack();
-  homeTeamRecordStack.addSpacer();
+  awayTeamRecordStack.addSpacer();
   let awayTeamRecord = awayTeamRecordStack.addText(atRecord);
   // awayTeamRecord.centerAlignText();
   awayTeamRecord.font = smallFont;
-  homeTeamRecordStack.addSpacer();
+  awayTeamRecordStack.addSpacer();
   
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.font = largeFont;
