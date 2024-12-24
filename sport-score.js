@@ -147,12 +147,12 @@ async function addCompetition (main, teamData, info) {
   awayTeam.spacing = 40;
   let awayImageRecordStack = awayTeam.addStack();
   awayImageRecordStack.layoutVertically();
-  awayImageRecordStack.centerAlignContent();
   let awayTeamImage = awayImageRecordStack.addImage(atImage);
   awayTeamImage.imageSize = new Size(30, 30);
   awayTeamRecord = awayImageRecordStack.addText(atRecord);
   awayTeamRecord.centerAlignText();
-  awayImageRecordStack.borderWidth = 1;
+  // awayImageRecordStack.borderWidth = 1;
+  awayImageRecordStack.centerAlignContent();
   awayTeamRecord.font = smallFont;
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.font = largeFont;
@@ -163,12 +163,12 @@ async function addCompetition (main, teamData, info) {
   homeTeam.spacing = 40;
   let homeImageRecordStack = homeTeam.addStack();
   homeImageRecordStack.layoutVertically();
-  homeImageRecordStack.centerAlignContent();
   let homeTeamImage = homeImageRecordStack.addImage(htImage);
   homeTeamImage.imageSize = new Size(30, 30);
   homeTeamRecord = homeImageRecordStack.addText(htRecord);
   homeTeamRecord.centerAlignText();
   homeTeamRecord.font = smallFont;
+  homeImageRecordStack.centerAlignContent();
   let homeTeamScore = homeTeam.addText("" + htScore);
   homeTeamScore.font = largeFont;
   homeTeamScore.rightAlignText();
