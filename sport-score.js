@@ -152,6 +152,7 @@ async function addCompetition (main, teamData, info) {
   awayTeamImage.imageSize = new Size(30, 30);
   awayTeamRecord = awayImageRecordStack.addText(atRecord);
   awayTeamRecord.centerAlignText();
+  awayTeamRecord.borderWidth = 1;
   awayTeamRecord.font = smallFont;
   let awayTeamScore = awayTeam.addText("" + atScore);
   awayTeamScore.font = largeFont;
