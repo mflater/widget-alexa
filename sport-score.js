@@ -147,6 +147,7 @@ async function addCompetition (main, teamData, info) {
   awayTeam.spacing = 40;
   let awayImageRecordStack = awayTeam.addStack();
   awayImageRecordStack.layoutVertically();
+  awayImageRecordStack.centerAlignContent();
   let awayTeamImage = awayImageRecordStack.addImage(atImage);
   awayTeamImage.imageSize = new Size(30, 30);
   awayTeamRecord = awayImageRecordStack.addText(atRecord);
@@ -161,6 +162,7 @@ async function addCompetition (main, teamData, info) {
   homeTeam.spacing = 40;
   let homeImageRecordStack = homeTeam.addStack();
   homeImageRecordStack.layoutVertically();
+  homeImageRecordStack.centerAlignContent();
   let homeTeamImage = homeImageRecordStack.addImage(htImage);
   homeTeamImage.imageSize = new Size(30, 30);
   homeTeamRecord = homeImageRecordStack.addText(htRecord);
