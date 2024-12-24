@@ -145,7 +145,8 @@ async function addCompetition (main, teamData, info) {
 
   // Set away team info
   awayTeam.size = new Size(110, 45);
-  awayTeam.spacing = 40;
+  // awayTeam.spacing = 40;
+  awayTeam.addSpacer();
   
   let awayImageRecordStack = awayTeam.addStack();
   awayImageRecordStack.layoutVertically();
@@ -169,7 +170,8 @@ async function addCompetition (main, teamData, info) {
 
   // Set home team info
   homeTeam.size = new Size(110, 45);
-  homeTeam.spacing = 40;
+  // homeTeam.spacing = 40;
+  homeTeam.addSpacer();
   
   let homeImageRecordStack = homeTeam.addStack();
   homeImageRecordStack.layoutVertically();
