@@ -165,8 +165,9 @@ async function addCompetition (main, teamData, info) {
   homeImageRecordStack.layoutVertically();
   let homeTeamImage = homeImageRecordStack.addImage(htImage);
   homeTeamImage.imageSize = new Size(30, 30);
-  homeTeamRecord = homeImageRecordStack.addStack().addText(htRecord);
-  homeTeamRecord.centerAlignText();
+  homeTeamRecordStack = homeImageRecordStack.addStack()
+  homeTeamRecord = homeTeamRecordStack.addText(htRecord);
+  homeTeamRecordStack.centerAlignContent();
   homeTeamRecord.font = smallFont;
   homeImageRecordStack.centerAlignContent();
   let homeTeamScore = homeTeam.addText("" + htScore);
