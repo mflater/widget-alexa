@@ -167,10 +167,13 @@ async function addCompetition (main, teamData, info) {
   
   let homeImageRecordStack = homeTeam.addStack();
   homeImageRecordStack.layoutVertically();
-  
-  let homeTeamImage = homeImageRecordStack.addImage(htImage);
-  homeTeamImage.imageSize = new Size(30, 30);
 
+  let homeTeamImageStack = homeImageRecordStack.addStack(); 
+  homeTeamImageStack.addSpacer();
+  let homeTeamImage = homeTeamImageStack.addImage(htImage);
+  homeTeamImage.imageSize = new Size(30, 30);
+  homeTeamImageStack.addSpacer();
+  
   let homeTeamRecordStack = homeImageRecordStack.addStack();
   homeTeamRecordStack.addSpacer();
   let homeTeamRecord = homeTeamRecordStack.addText(htRecord);
