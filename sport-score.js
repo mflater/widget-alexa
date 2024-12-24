@@ -129,9 +129,10 @@ async function addCompetition (main, teamData, info) {
   
   let competition = main.addStack();
   competition.layoutVertically();
-  competition.spacing = 10;
+  // competition.spacing = 10;
   let awayTeam = competition.addStack();
   awayTeam.layoutHorizontally();
+  competition.addSpacer();
   let homeTeam = competition.addStack();
   homeTeam.layoutHorizontally();
 
