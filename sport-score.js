@@ -238,7 +238,7 @@ async function createWidget(config) {
 // https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/SF
 
 // Using: https://gitlab.com/sillium-scriptable-projects/universal-scriptable-widget
-
+// ESPN API Docs --- https://gist.github.com/akeaswaran/b48b02f1c94f873c6655e7129910fc3b
 
 module.exports = {
     createWidget
